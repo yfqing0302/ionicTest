@@ -1,28 +1,61 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { HomePage } from './home.page';
+import { HomePage } from "./home.page";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: HomePage,
-    children:[
+    children: [
       {
-        path:'recommend',
-        loadChildren:()=>import('../pages/recommend/recommend.module').then(m=>m.RecommendPageModule)
+        path: "recommend",
+        children: [
+          {
+            path: "",
+            loadChildren: () =>
+              import("../pages/recommend/recommend.module").then(
+                m => m.RecommendPageModule
+              )
+          }
+        ]
       },
       {
-        path:'classfiy',
-        loadChildren:()=>import('../pages/classfiy/classfiy.module').then(m=>m.ClassfiyPageModule)
+        path: "classfiy",
+        children: [
+          {
+            path: "",
+            loadChildren: () =>
+            import("../pages/classfiy/classfiy.module").then(
+              m => m.ClassfiyPageModule
+            )
+              
+          }
+        ]
       },
       {
-        path:'support',
-        loadChildren:()=>import('../pages/support/support.module').then(m=>m.SupportPageModule)
+        path: "support",
+        children: [
+          {
+            path: "",
+            loadChildren: () =>
+            import("../pages/support/support.module").then(
+              m => m.SupportPageModule
+            )
+              
+          }
+        ]
       },
       {
-        path:'me',
-        loadChildren:()=>import('../pages/me/me.module').then(m=>m.MePageModule)
+        path: "me",
+        children: [
+          {
+            path: "",
+            loadChildren: () =>
+            import("../pages/me/me.module").then(m => m.MePageModule)
+              
+          }
+        ]
       }
     ]
   }
@@ -30,6 +63,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class HomePageRoutingModule {}
