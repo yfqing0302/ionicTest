@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-recommend',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecommendPage implements OnInit {
 
-  constructor() { }
+  products:any;
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
+     this.productService.loadProducts();
+    //  this.products =this.productService.products;
   }
 
 }
